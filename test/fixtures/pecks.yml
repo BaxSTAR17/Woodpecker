@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: MyString
+  poster_id: 1
+  tree: MyString
+  pecks: 1
+
+two:
+  post: MyString
+  poster_id: 1
+  tree: MyString
+  pecks: 1

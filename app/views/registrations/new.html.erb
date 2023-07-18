@@ -1,0 +1,101 @@
+<style>
+    body {
+        background-image: url(tree.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-position-y: 5px;
+        background-size: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 200px;
+    }
+    h1 {
+        font-family: Tahoma;
+        font-size: 40px;
+        color: white;
+    }
+    .emailcontainer {
+        color: white;
+        font-family: Tahoma;
+        display: flex;
+        gap: 99px;
+    }
+    .passwordcontainer {
+        color: white;
+        font-family: Tahoma;
+        display: flex;
+        gap: 71px;
+    }
+    .passwordconfirmcontainer {
+        color: white;
+        font-family: Tahoma;
+        display: flex;
+        gap: 10.5px;
+    }
+    .usernamecontainer {
+        color: white;
+        font-family: Tahoma;
+        display: flex;
+        gap: 66.5px;
+    }
+    .signup {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .signbtn {
+        border: none;
+        border-radius: 40px;
+        background-color: darkred;
+        border: 2px solid white;
+        color: white;
+        font-family: Tahoma;
+        font-weight: 750;
+        width: 150px;
+        height: 50px;
+        text-align: center;
+        transition: background-color 0.5s ease-out;
+        transition: color 0.3s ease-out;
+        text-decoration: none;
+    }
+    .signbtn:hover {
+        background-color: white;
+        color: darkred;
+    }
+</style>
+
+<h1>Sign Up</h1>
+
+<%= form_with model: @user, url: sign_up_path do |form| %>
+    <% if @user.errors.any? %>
+        <div class="error">
+            <% @user.errors.full_messages.each do |message|%>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div class="emailcontainer">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control", placeholder: "shikhbuer@femail.com" %>
+    </div>
+    <div class="passwordcontainer">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+    <div class="passwordconfirmcontainer">
+        <%= form.label :confirm_password %>
+        <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+    </div>
+    <div class="usernamecontainer">
+        <%= form.label :username %>
+        <%= form.text_field :username, class: "form-control", placeholder: "Shikh Buer" %>
+    </div>
+
+    <div class="signup">
+        <%= form.submit "Create Account", class: "signbtn" %>
+    </div>
+
+<% end %>
