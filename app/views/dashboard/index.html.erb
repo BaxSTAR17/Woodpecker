@@ -271,7 +271,7 @@
                 </div>
 
                 <div class="peckercontainer">
-                    <%= form.text_field :pecks, class: "pecker" %>
+                    <%= form.text_field :pecks, class: "pecker" value: "1" %>
                 </div>
 
                 <div class="postbtncontainer">
@@ -287,18 +287,18 @@
                 </div>
                 -->
                 <% if Current.user.pecks %>
-                <% @pecks = Peck.where(tree: "Main Forest")%>
-                <% @pecks.each do |peck| %>
-                    <% if peck.pecks <= 20 && peck.pecks != nil %>
-                        <% for i in 1..peck.pecks %>
-                            <div>
-                            <img src="Logo.png" alt="Pecking...">
-                            <a> <%= peck.user.username %> </a>
-                            <p><%= peck.post %></p>
-                            </div>
+                    <% @pecks = Peck.where(tree: "Main Forest")%>
+                    <% @pecks.each do |peck| %>
+                        <% if peck.pecks <= 20 && peck.pecks != nil %>
+                            <% for i in 1..peck.pecks %>
+                                <div>
+                                    <img src="Logo.png" alt="Pecking...">
+                                    <a> <%= peck.user.username %> </a>
+                                    <p><%= peck.post %></p>
+                                </div>
+                            <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
                 <% end %>
             </div>
         </div>
