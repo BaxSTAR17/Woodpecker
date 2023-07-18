@@ -252,7 +252,7 @@
                 <% if Current.user.pecks %>
                 <% @pecks = Peck.where(user_id: Current.user.id)%>
                 <% @pecks.each do |peck| %>
-                    <% if peck.pecks <= 20 %>
+                    <% if peck.pecks <= 20 && peck.pecks != nil %>
                         <% for i in 1..peck.pecks %>
                             <div>
                             <img src="Logo.png" alt="Pecking...">
