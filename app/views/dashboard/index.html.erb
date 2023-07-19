@@ -296,7 +296,7 @@
                                 <% for i in 1..peck.pecks %>
                                     <div>
                                         <img src="Logo.png" alt="Pecking...">
-                                        <%= link_to peck.user.username, another_user_path(:vuser => peck.user), class: "a"%>
+                                        <%= link_to peck.user.username, another_user_path(:vuser => peck.user.username, :vuserid => peck.user.id), class: "a"%>
                                         <p><%= peck.post %></p>
                                     </div>
                                 <% end %>
