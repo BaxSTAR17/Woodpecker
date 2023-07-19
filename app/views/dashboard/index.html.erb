@@ -163,8 +163,8 @@
         }
         .footerbar {
             position: fixed;
-            margin-top: 650px;
-            margin-left: 820px;
+            bottom: 0;
+            right: 0;
             width: 490px;
             height: 40px;
             border-radius: 60px;
@@ -217,7 +217,7 @@
             border-radius: 40px;
             border: 2px solid darkred;
         }
-        .postfeed > div > a {
+        .a {
             position: absolute;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 15px;
@@ -294,7 +294,7 @@
                                 <% for i in 1..peck.pecks %>
                                     <div>
                                         <img src="Logo.png" alt="Pecking...">
-                                        <a> <%= peck.user.username %> </a>
+                                        <%= link_to peck.user.username, another_user_path(:vuser => peck.user)%>
                                         <p><%= peck.post %></p>
                                     </div>
                                 <% end %>

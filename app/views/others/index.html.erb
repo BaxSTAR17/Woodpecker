@@ -231,7 +231,7 @@
     <div class="mainbody">
         <div class="accountface">
                 <img src="Logo.png" class="pfp">
-                <span class="username"><%= Current.user.username %></span>
+                <span class="username"><%= @vuser.username %></span>
         </div>
         <div class="postcontainer">
             <!-- This is a form layout
@@ -250,7 +250,7 @@
                 </div>
                 -->
                 <% if Current.user.pecks %>
-                <% @pecks = Peck.where(user_id: Current.user.id)%>
+                <% @pecks = Peck.where(user_id: @vuser.id)%>
                 <% @pecks.each do |peck| %>
                     <% if !peck.pecks.nil? %>
                         <% if peck.pecks <= 20 %>
