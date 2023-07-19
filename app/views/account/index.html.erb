@@ -178,13 +178,15 @@
             border-radius: 40px;
             border: 2px solid darkred;
         }
-        .postfeed > div > a {
+        .a {
             position: absolute;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 15px;
             font-weight: 670;
             top: 10px;
             left: 60px;
+            text-decoration: none;
+            color: darkred;
         }
         .postfeed > div > p {
             position: absolute;
@@ -257,7 +259,7 @@
                             <% for i in 1..peck.pecks %>
                                 <div>
                                     <img src="Logo.png" alt="Pecking...">
-                                    <a> <%= peck.user.username %> </a>
+                                    <%= link_to peck.user.username, another_user_path(:vuser => peck.user), class: "a"%>
                                     <p><%= peck.post %></p>
                                 </div>
                             <% end %>
