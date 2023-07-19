@@ -69,11 +69,50 @@
             border-top: 1px solid darkred;
             padding-top: 10px;
         }
+        .listoftrees {
+            display: flex; 
+            flex-direction: column;
+            height: 250px;
+            border-bottom: 2px solid darkred;
+            width: 200px;
+            border-radius: 40px;
+        }
+        .fulllogo {
+            height: 40px;  
+        }
+        .listoftrees > button {
+            width: 200px;
+            height: 50px;
+            border: none;
+            border-bottom: 1px solid darkgray;
+            transition: background-color 0.2s;
+            text-align: left;
+            color: darkred;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 20px;
+        }
+        .listoftrees > button:hover {
+            background-color: darkgray;
+        }
+        .treetitle {
+            width: 200px;
+            height: auto;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid darkred;
+            color: darkred;
+            background-image: url(tree.png);
+            background-position: left center;
+            background-position-x: 10px;
+            background-size: 15px;
+            font-size: 20px;
+            background-repeat: no-repeat;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
         .postcontainer {
             width: 520px;
             height: auto;
-            border-left: 1px solid lightgray;
-            padding-left: 10px;
+            border-right: 1px solid lightgray;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -196,30 +235,19 @@
             top: 24px;
             left: 20px;
         }
-        .accountface {
-            display: flex;
-            flex-direction: column;
-        }
-        .pfp {
-            height: 100px;
-            width: 100px;
-            border: 1px solid Black;
-            border-radius: 50px;
-        }
-        .username {
-            font-family: Impact;
-            color: darkred;
-            font-size: 30px;
-        }
         .userlinkage {
             text-decoration: none;
             color: darkred;
+        }
+        .homelink {
+            opacity: 0;
         }
     </style>
 
 <div class="headernavbar">
         <img class="logo"src="Logo.png" alt="Pecking..">
         <button class="home">
+            <%= link_to "Homeeeeeeeeeeeee", root_path, class: "homelink"%>
         </button>
         <button class="trees"></button>
         <button class="search"></button>
@@ -232,10 +260,6 @@
         </button>
     </div>
     <div class="mainbody">
-        <div class="accountface">
-                <img src="Logo.png" class="pfp">
-                <span class="username"><%= Current.user.username %></span>
-        </div>
         <div class="postcontainer">
             <!-- This is a form layout
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" class="poster" method="POST">
@@ -244,6 +268,19 @@
                 <input type="submit" class="postbtn" value="Peck">
             </form>
             -->
+            <%= form_with model: @peck, url: sports_path do |form| %>
+                <div class="postareacontainer">
+                    <%= form.text_field :post, class: "postarea", placeholder: "Spam a message!" %>
+                </div>
+
+                <div class="peckercontainer">
+                    <%= form.text_field :pecks, class: "pecker", value: "1" %>
+                </div>
+
+                <div class="postbtncontainer">
+                    <%= form.submit "Peck", class: "postbtn" %>
+                </div>
+            <% end %>
             <div class="postfeed">
                 <!-- This is a post layout
                 <div class="">
@@ -253,25 +290,33 @@
                 </div>
                 -->
                 <% if Current.user.pecks %>
-                <% @pecks = Peck.where(user_id: Current.user.id)%>
-                <% @pecks.each do |peck| %>
-                    <% if !peck.pecks.nil? %>
-                        <% if peck.pecks <= 20 %>
-                            <% for i in 1..peck.pecks %>
-                                <div>
-                                    <img src="Logo.png" alt="Pecking...">
-                                    <%= link_to peck.user.username, another_user_path(:vuser => peck.user.username, :vuserid => peck.user.id), class: "a"%>
-                                    <p><%= peck.post %></p>
-                                </div>
+                    <% @pecks = Peck.where(tree: "Sports")%>
+                    <% @pecks.each do |peck| %>
+                        <% if !peck.pecks.nil? %>
+                            <% if peck.pecks <= 20%>
+                                <% for i in 1..peck.pecks %>
+                                    <div>
+                                        <img src="Logo.png" alt="Pecking...">
+                                        <%= link_to peck.user.username, another_user_path(:vuser => peck.user.username, :vuserid => peck.user.id), class: "a"%>
+                                        <p><%= peck.post %></p>
+                                    </div>
+                                <% end %>
                             <% end %>
                         <% end %>
                     <% end %>
                 <% end %>
-                <% end %>
             </div>
+        </div>
+        <div class="listoftrees">
+            <div class="treetitle">Trees</div>
+            <button class=""><%= link_to "🌳 Main Forest", dashboard_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 Music", music_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 Gaming", gaming_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 News", news_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 TV", tv_path, class: "userlinkage" %></button>
         </div>
     </div>
     <div class="footerbar">
         <%= link_to "Home Forest", dashboard_path, class: "currenttree"%>
-        <button class="currenttree">Find other users</button>
+        <%= link_to ">> Next Tree", gaming_path, class: "currenttree"%>
     </div>

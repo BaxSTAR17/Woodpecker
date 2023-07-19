@@ -204,6 +204,7 @@
             height: 70px;
             border-color:lightgrey;
             width: 500px;
+            overflow: auto;
             border-width: 1px;
             border-radius: 10px;
             box-shadow: 6px 4px 5px darkred;
@@ -308,14 +309,14 @@
         </div>
         <div class="listoftrees">
             <div class="treetitle">Trees</div>
-            <button class="">🌳 Music</button>
-            <button class="">🌳 Sports</button>
-            <button class="">🌳 Gaming</button>
-            <button class="">🌳 News</button>
-            <button class="">🌳 TV</button>
+            <button class=""><%= link_to "🌳 Music", music_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 Sports", sports_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 Gaming", gaming_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 News", news_path, class: "userlinkage" %></button>
+            <button class=""><%= link_to "🌳 TV", tv_path, class: "userlinkage" %></button>
         </div>
     </div>
     <div class="footerbar">
         <%= link_to "Home Forest", dashboard_path, class: "currenttree"%>
-        <button class="currenttree">>> Next Tree</button>
+        <%= link_to ">> Next Tree", music_path, class: "currenttree"%>
     </div>
