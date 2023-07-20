@@ -74,6 +74,8 @@
         .joinedusers {
             display: flex;
             flex-direction: column;
+            overflow: auto;
+            height: 400px;
         }
         .footerbar {
             position: fixed;
@@ -122,12 +124,14 @@
         .userfeed {
             display: flex;
             flex-direction: column;
+            overflow: auto;
+            height: 400px;
         }
         .branchfeed {
             display: flex;
             overflow: auto;
-            width: 490px;
-            height: 500px;
+            width: 495px;
+            height: 450px;
             flex-direction: reverse-column;
             border-right: 1px solid darkgray;
             border-left: 1px solid darkgray;
@@ -151,7 +155,7 @@
             font-family: Impact;
         }
         .userfeed > div {
-            width: 100px;
+            width: 200px;
             height: 50px;
             display: flex;
             align-items: left;
@@ -171,6 +175,7 @@
         .inviteuser {
             text-decoration: none;
             font-family: Impact;
+            border: none;
         }
         .branchlogo {
             height: 35px;
@@ -180,7 +185,7 @@
             display: flex;
             flex-direction: row;
         }
-        .branchtitle > h1 {
+        h1 {
             font-family: Impact;
             font-size: 20px;
             color: darkred;
@@ -239,12 +244,13 @@
     </div>
     <div class="mainbody">
         <div class="joinedusers">
+            <h1>Share the branch with:</h1>
             <% @currentbranch = Branch.where(name: @branchname) %>
             <% @joined = User.joins(:branches).where(branches: {name: @branchname})%>
             <% @joined.each do |joined| %>
                 <div>
                     <img src="Logo.png" class="profilepic">
-                    <span><%= link_to joined.username, another_user_path(:vuser => joined.username, :vuserid => joined.id), class: "joinedusername"%></span>
+                    <span><%= link_to joined.username, another_user_path(:vuser => joined.username, :vuserid => joined.id), class: "userlinkage"%></span>
                 </div>
             <% end %>
         </div>
@@ -286,6 +292,7 @@
             </div>
         </div>
         <div class="userfeed">
+            <h1>Branched with:</h1>
             <% @others = User.joins(:branches).where(branches: {name: !@branchname})%>
             <% User.all.each do |other|%>
                 <div>
