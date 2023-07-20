@@ -130,6 +130,7 @@
         .branchfeed {
             display: flex;
             flex-direction: column-reverse;
+            align-items: stretch;
             overflow: auto;
             width: 494px;
             height: 450px;
@@ -273,7 +274,7 @@
         <button class="home">
             <%= link_to "Homeeeeeeeeeeeee", root_path, class: "homelink"%>
         </button>
-        <button class="trees"></button>
+        <button class="trees"><%= link_to "Treeeeeeeeeeeeee", branchlist_path, class: "homelink"%></button>
         <button class="search"></button>
         <button class="user">
             <% if Current.user%>

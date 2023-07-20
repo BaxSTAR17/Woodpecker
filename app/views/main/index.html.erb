@@ -121,7 +121,7 @@
     <div class="loginpanel">
         <span class="logintitle">Log In to start!</span>
         <% if Current.user%>
-            <%= link_to "Dashboard", dashboard_path, class: "dashbtn" %>
+            <%= link_to "Main Forest", dashboard_path, class: "dashbtn" %>
             <%= button_to "Logout", logout_path, class: "logoutbtn", method: :delete %>
         <% else %>
             <%= link_to "Login", login_path, class: "loginbtn" %>
