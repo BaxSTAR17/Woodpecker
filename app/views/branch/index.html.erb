@@ -300,7 +300,7 @@
             </div>
             <div class="branchfeed">
             <% if Current.user.pecks %>
-                <% @pecks = Peck.where(tree: @branchname)%>
+                <% @pecks = Peck.where(tree: "Test Branch")%>
                     <% @pecks.each do |peck| %>
                         <% if !peck.pecks.nil? %>
                             <% if peck.pecks <= 20%>
