@@ -315,7 +315,7 @@
                     <% end %>
             </div>
             <div class="peckbranches">
-                <%= form_with model: @peck, url: branch_path do |form| %>
+                <%= form_with model: @peck, url: branching_path do |form| %>
                     <div class="postareacontainer">
                         <%= form.text_field :post, class: "postarea", placeholder: "Spam a message!" %>
                     </div>

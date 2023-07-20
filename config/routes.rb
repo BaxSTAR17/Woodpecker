@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   post "branchlist", to: "branchlist#create"
 
   get "branch", to: "branch#index"
-  post "branch", to: "branch#create"
+  post "branching", to: "branch#create"
   post "invite", to: "branch#invite"
 
   delete "logout", to: "sessions#destroy"
