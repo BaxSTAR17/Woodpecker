@@ -135,6 +135,7 @@
             height: 450px;
             border-right: 1px solid darkgray;
             border-left: 1px solid darkgray;
+            gap: 10px;
         }
         .joinedusers > div {
             width: 100px;
@@ -333,7 +334,7 @@
         <div class="userfeed">
             <h1>Branched with:</h1>
             <% @others = User.joins(:branches).where(branches: {name: !@branchname})%>
-            <% User.all.each do |other|%>
+            <% @others.each do |other|%>
                 <div>
                     <img src="Logo.png" class="profilepic">
                     <%= button_to other.username, invite_path(:user => other, :branchname => @branchname, :user_id => other.id), class: "inviteuser" %>
