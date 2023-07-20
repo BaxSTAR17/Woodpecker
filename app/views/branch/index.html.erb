@@ -299,7 +299,7 @@
                 <h1><%= @branchname %></h1>
             </div>
             <div class="branchfeed">
-            <% @branchname = @branchname %>
+            <% if Current.user.pecks %>
                 <% @pecks = Peck.where(tree: @branchname)%>
                     <% @pecks.each do |peck| %>
                         <% if !peck.pecks.nil? %>
@@ -314,6 +314,7 @@
                             <% end %>
                         <% end %>
                     <% end %>
+            <% end %>
             </div>
             <div class="peckbranches">
                 <%= form_with model: @peck, url: branching_path do |form| %>
