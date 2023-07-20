@@ -5,6 +5,7 @@ class BranchController < ApplicationController
 
     def create
         @peck = Current.user.pecks.create(post: params[:post], tree: @branchname, pecks: params[:pecks], user_id: Current.user.id)
+        @branchname = @branchname
         redirect_to branch_path
     end
 
