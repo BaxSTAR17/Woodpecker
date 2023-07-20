@@ -299,6 +299,7 @@
                 <h1><%= @branchname %></h1>
             </div>
             <div class="branchfeed">
+            <% @branchname = @branchname %>
                 <% @pecks = Peck.where(tree: @branchname)%>
                     <% @pecks.each do |peck| %>
                         <% if !peck.pecks.nil? %>
