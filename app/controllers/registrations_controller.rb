@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
         @user = User.new(user_params)
         if @user.save 
             session[:user_id] = @user.id
+            @user.branches.create(name: "Your Private Branch", user_id: @user.id)
             redirect_to dashboard_path, notice: "User was successfully created"
         else
             render :new
