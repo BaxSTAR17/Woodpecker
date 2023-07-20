@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   get "tv", to: "tv#index"
   post "tv", to: "tv#create"
 
-  get "branch_list", to: "branchlist#index"
-  post "branch_list", to: "branchlist#create"
+  get "branchlist", to: "branchlist#index"
+  post "branchlist", to: "branchlist#create"
 
   get "branch", to: "branch#index"
   post "branch", to: "branch#create"
