@@ -125,7 +125,12 @@
         }
         .branchfeed {
             display: flex;
+            overflow: auto;
+            width: 490px;
+            height: 500px;
             flex-direction: reverse-column;
+            border-right: 1px solid darkgray;
+            border-left: 1px solid darkgray;
         }
         .joinedusers > div {
             width: 100px;
@@ -170,6 +175,10 @@
         .branchlogo {
             height: 35px;
             width: 35px;
+        }
+        .branchtitle {
+            display: flex;
+            flex-direction: row;
         }
         .branchtitle > h1 {
             font-family: Impact;
