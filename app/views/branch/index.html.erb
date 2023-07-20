@@ -300,7 +300,7 @@
             </div>
             <div class="branchfeed">
             <% if Current.user.pecks %>
-                <% @pecks = Peck.where(tree: "Test Branch")%>
+                <% @pecks = Peck.where(tree: @branchname)%>
                     <% @pecks.each do |peck| %>
                         <% if !peck.pecks.nil? %>
                             <% if peck.pecks <= 20%>
@@ -338,7 +338,7 @@
             <% @others.each do |other|%>
                 <div>
                     <img src="Logo.png" class="profilepic">
-                    <%= button_to other.username, invite_path(:user => other, :branchname => @branchname, :user_id => other.id), class: "inviteuser" %>
+                    <%= button_to other.username, invite_path(:user => other, :name => @branchname, :user_id => other.id), class: "inviteuser" %>
                 </div>
             <% end %>
         </div>

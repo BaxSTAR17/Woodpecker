@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post "branchlist", to: "branchlist#create"
 
   get "branch", to: "branch#index"
+  get "branched", to: "branch#new"
   post "branching", to: "branch#create"
   post "invite", to: "branch#invite"
 

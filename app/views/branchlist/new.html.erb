@@ -46,6 +46,7 @@
             background-size: 20px;
             background-repeat: no-repeat;
             background-position: center;
+            background-color: darkgray;
         }
         .search {
             background-image: url(search.png);
@@ -72,23 +73,14 @@
         .postcontainer {
             width: 520px;
             height: auto;
-            border-left: 1px solid lightgray;
-            padding-left: 10px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
         .postarea {
             width: 490px;
-            height: 50px;
             border: 1px solid darkgray;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .poster {
-            display:flex;
-            flex-direction: column;
-            border: none;
-            gap: 5px;
         }
         .postfeed {
             width: 500px;
@@ -98,8 +90,7 @@
             gap: 7px;
         }
         .postbtn {
-            width: 50px;
-            margin-left: 445px;
+            width: 490px;
             height: 30px;
             color: white;
             border: none;
@@ -110,17 +101,6 @@
         }
         .postbtn:hover {
             background-color: rgb(90, 1, 1);
-        }
-        .pecker {
-            width: 30px;
-            height: 20px;
-            border-radius: 40px;
-            text-align: center;
-            margin-left: 455px;
-            border:none;
-            border: 1px solid lightgray;
-            background-color: crimson;
-            color: white;
         }
         .footerbar {
             position: fixed;
@@ -160,56 +140,30 @@
             background-color: rgb(167, 167, 167);
         }
         .postfeed > div {
-            position: relative;
-            border: solid;
-            height: 70px;
-            overflow: auto;
-            border-color:lightgrey;
-            width: 500px;
-            border-width: 1px;
-            border-radius: 10px;
-            box-shadow: 6px 4px 5px darkred;
-        }
-        .postfeed > div > img {
-            width: 25px;
-            height: 25px;
-            position: absolute;
-            left: 20px;
-            top: 5px;
-            border-radius: 40px;
+            display: flex;
             border: 2px solid darkred;
+            background-color: white;
+            height: 40px;
+            width: 500px;
+            overflow: auto;
+            border-radius: 30px;
+            align-items: left;
+            transition: background-color 0.3s ease-out;
+        }
+        .postfeed > div:hover {
+            background-color: darkred;
         }
         .a {
-            position: absolute;
+            margin-top: 10px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 15px;
             font-weight: 670;
-            top: 10px;
-            left: 60px;
             text-decoration: none;
             color: darkred;
+            transition: color 0.3s ease-out;
         }
-        .postfeed > div > p {
-            position: absolute;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 15px;
-            top: 24px;
-            left: 20px;
-        }
-        .accountface {
-            display: flex;
-            flex-direction: column;
-        }
-        .pfp {
-            height: 100px;
-            width: 100px;
-            border: 1px solid Black;
-            border-radius: 50px;
-        }
-        .username {
-            font-family: Impact;
-            color: darkred;
-            font-size: 30px;
+        .a:hover {
+            color: white;
         }
         .userlinkage {
             text-decoration: none;
@@ -225,7 +179,7 @@
         <button class="home">
             <%= link_to "Homeeeeeeeeeeeee", root_path, class: "homelink"%>
         </button>
-        <button class="trees"><%= link_to "Treeeeeeeeee", branchlist_path, class: "homelink"%></button>
+        <button class="trees"></button>
         <button class="search"></button>
         <button class="user">
             <% if Current.user%>
@@ -236,10 +190,6 @@
         </button>
     </div>
     <div class="mainbody">
-        <div class="accountface">
-                <img src="Logo.png" class="pfp">
-                <span class="username"><%= @viewed_user %></span>
-        </div>
         <div class="postcontainer">
             <!-- This is a form layout
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" class="poster" method="POST">
@@ -248,6 +198,14 @@
                 <input type="submit" class="postbtn" value="Peck">
             </form>
             -->
+            <%= form_with model: @branch, url: branchlist_path do |form| %>
+                <div class="postareacontainer">
+                    <%= form.text_field :name, class: "postarea", placeholder: "Name of Branch" %>
+                </div>
+                <div class="postbtncontainer">
+                    <%= form.submit "Create Branch", class: "postbtn" %>
+                </div>
+            <% end %>
             <div class="postfeed">
                 <!-- This is a post layout
                 <div class="">
@@ -256,26 +214,18 @@
                     <p>This is a test post</p>
                 </div>
                 -->
-                <% if Current.user.pecks %>
-                <% @pecks = Peck.where(user_id: @viewed_user_id, tree: "Main Forest")%>
-                <% @pecks.each do |peck| %>
-                    <% if !peck.pecks.nil? %>
-                        <% if peck.pecks <= 20 %>
-                            <% for i in 1..peck.pecks %>
-                                <div>
-                                    <img src="Logo.png" alt="Pecking...">
-                                    <%= link_to peck.user.username, another_user_path(:vuser => peck.user.username, :vuserid => peck.user.id), class: "a"%>
-                                    <p><%= peck.post %></p>
-                                </div>
-                            <% end %>
-                        <% end %>
+                <% if Current.user.branches %>
+                    <% @branches = Branch.where(user_id: Current.user.id)%>
+                    <% @branches.each do |branch| %>  
+                        <div>
+                            <%= link_to branch.name, branch_path(:branchname => branch.name), class: "a"%>
+                        </div>
                     <% end %>
-                <% end %>
                 <% end %>
             </div>
         </div>
     </div>
     <div class="footerbar">
         <%= link_to "Home Forest", dashboard_path, class: "currenttree"%>
-        <button class="currenttree">Find other users</button>
+        <%= link_to ">> Next Tree", music_path, class: "currenttree"%>
     </div>
