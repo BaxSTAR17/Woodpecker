@@ -334,7 +334,7 @@
         </div>
         <div class="userfeed">
             <h1>Share the branch with:</h1>
-            <% @others = User.joins(:branches).where.not(branches: {name: @branchname})%>
+            <% @others = User.joins(:branches).where.not(branches: {name: @branchname}).or(User.joins(:branches).where(branches: nil))%>
             <% @others.each do |other|%>
                 <div>
                     <img src="Logo.png" class="profilepic">
