@@ -1,0 +1,291 @@
+    <style>
+        body {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            gap: 20px;
+        }
+        .headernavbar {
+            display:flex;
+            width: auto;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            border-radius: 70px;
+            gap: 20px;
+            background-color: rgb(236, 236, 236);
+            border: 2px solid darkred;
+            padding-right: 40px;
+            padding-left: 40px;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
+        .headernavbar > button {
+            width: 140px;
+            height: 40px;
+            border-radius: 60px;
+            border: none;
+            background-color: transparent;
+            transition: background-color 0.2s;
+        }
+        .headernavbar > button:hover {
+            background-color: rgb(167, 167, 167);
+        }
+        .home {
+            background-image: url(home.png);
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .trees {
+            background-image: url(tree.png);
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: darkgray;
+        }
+        .search {
+            background-image: url(search.png);
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .user {
+            background-image: url(user.png);
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: left center;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color:darkred;
+            font-size: 15px;
+        }
+        .mainbody {
+            display: flex;
+            gap: 50px;
+            border-top: 1px solid darkred;
+            padding-top: 10px;
+            align-items: center;
+        }
+        .joinedusers {
+            display: flex;
+            flex-direction: column;
+        }
+        .footerbar {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 490px;
+            height: 40px;
+            border-radius: 60px;
+            border: none;
+            background-color: transparent;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid darkred;
+            background-color: rgb(236, 236, 236);
+        }
+        .currenttree {
+            width: 220px;
+            height: 30px;
+            border-radius: 60px;
+            border: none;
+            background-image: url(tree.png);
+            background-repeat: no-repeat;
+            background-size: 10px;
+            background-position: left center;
+            background-position-x: 10px;
+            background-color: rgb(217, 216, 216);
+            transition: background-color 0.2s;
+            color: darkred;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-decoration: none;
+            text-align: center;
+        }
+        .currenttree:hover {
+            background-color: rgb(167, 167, 167);
+        }
+        .userlinkage {
+            text-decoration: none;
+            color: darkred;
+        }
+        .homelink {
+            opacity: 0;
+        }
+        .userfeed {
+            display: flex;
+            flex-direction: column;
+        }
+        .branchfeed {
+            display: flex;
+            flex-direction: reverse-column;
+        }
+        .joinedusers > div {
+            width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: left;
+            border-radius: 25px;
+            color: darkred;
+            flex-direction: row;
+        }
+        .joinedusers > img {
+            height: 30px;
+            width: 30px;
+            border-radius: 20px;
+        }
+        .joinedusers > span {
+            text-decoration: none;
+            font-family: Impact;
+        }
+        .userfeed > div {
+            width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: left;
+            border-radius: 25px;
+            color: darkred;
+            flex-direction: row;
+            transition: background-color 0.3s ease-in;
+        }
+        .userfeed > div:hover {
+            background-color: darkgray;
+        }
+        .userfeed > img {
+            height: 30px;
+            width: 30px;
+            border-radius: 20px;
+        }
+        .inviteuser {
+            text-decoration: none;
+            font-family: Impact;
+        }
+        .branchlogo {
+            height: 35px;
+            width: 35px;
+        }
+        .branchtitle > h1 {
+            font-family: Impact;
+            font-size: 20px;
+            color: darkred;
+        }
+        .branchcontainer {
+            display: flex;
+            flex-direction: column;
+        }
+        .postbtn {
+            width: 50px;
+            margin-left: 445px;
+            height: 30px;
+            color: white;
+            border: none;
+            background-color: darkred;
+            margin-bottom: 5px;
+            border-radius: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .postbtn:hover {
+            background-color: rgb(90, 1, 1);
+        }
+        .pecker {
+            width: 30px;
+            height: 20px;
+            border-radius: 40px;
+            text-align: center;
+            margin-left: 455px;
+            border:none;
+            border: 1px solid lightgray;
+            background-color: crimson;
+            color: white;
+        }
+        .postarea {
+            width: 490px;
+            height: 50px;
+            border: 1px solid darkgray;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+
+<div class="headernavbar">
+        <img class="logo"src="Logo.png" alt="Pecking..">
+        <button class="home">
+            <%= link_to "Homeeeeeeeeeeeee", root_path, class: "homelink"%>
+        </button>
+        <button class="trees"></button>
+        <button class="search"></button>
+        <button class="user">
+            <% if Current.user%>
+                <%= link_to Current.user.username, user_path, class: "userlinkage"%>
+            <% else %>
+                <%= link_to "Log In", root_path, class: "userlinkage"%>
+            <% end %>
+        </button>
+    </div>
+    <div class="mainbody">
+        <div class="joinedusers">
+            <% @currentbranch = Branch.where(name: @branchname) %>
+            <% @joined = User.joins(:branches).where(branches: {name: @branchname})%>
+            <% @joined.each do |joined| %>
+                <div>
+                    <img src="Logo.png" class="profilepic">
+                    <span><%= link_to joined.username, another_user_path(:vuser => joined.username, :vuserid => joined.id), class: "joinedusername"%></span>
+                </div>
+            <% end %>
+        </div>
+        <div class="branchcontainer">
+            <div class="branchtitle">
+                <img src="tree.png" class="branchlogo">
+                <h1><%= @branchname %></h1>
+            </div>
+            <div class="branchfeed">
+                <% @pecks = Peck.where(tree: @branchname)%>
+                    <% @pecks.each do |peck| %>
+                        <% if !peck.pecks.nil? %>
+                            <% if peck.pecks <= 20%>
+                                <% for i in 1..peck.pecks %>
+                                    <div>
+                                        <img src="Logo.png" alt="Pecking...">
+                                        <%= link_to peck.user.username, another_user_path(:vuser => peck.user.username, :vuserid => peck.user.id), class: "a"%>
+                                        <p><%= peck.post %></p>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+            </div>
+            <div class="peckbranches">
+                <%= form_with model: @peck, url: branch_path do |form| %>
+                    <div class="postareacontainer">
+                        <%= form.text_field :post, class: "postarea", placeholder: "Spam a message!" %>
+                    </div>
+
+                    <div class="peckercontainer">
+                        <%= form.text_field :pecks, class: "pecker", value: "1" %>
+                    </div>
+
+                    <div class="postbtncontainer">
+                        <%= form.submit "Peck", class: "postbtn" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="userfeed">
+            <% @others = User.joins(:branches).where(branches: {name: !@branchname})%>
+            <% User.all.each do |other|%>
+                <div>
+                    <img src="Logo.png" class="profilepic">
+                    <%= button_to other.username, invite_path(:user => other, :branchname => @branchname, :user_id => other.id), class: "inviteuser" %>
+                </div>
+            <% end %>
+        </div>
+    <div class="footerbar">
+        <%= link_to "Home Forest", dashboard_path, class: "currenttree"%>
+        <%= link_to ">> Next Tree", music_path, class: "currenttree"%>
+    </div>

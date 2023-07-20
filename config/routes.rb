@@ -28,6 +28,13 @@ Rails.application.routes.draw do
   get "tv", to: "tv#index"
   post "tv", to: "tv#create"
 
+  get "branch_list", to: "branchlist#index"
+  post "branch_list", to: "branchlist#create"
+
+  get "branch", to: "branch#index"
+  post "branch", to: "branch#create"
+  post "invite", to: "branch#invite"
+
   delete "logout", to: "sessions#destroy"
 
   root to: "main#index"

@@ -61,6 +61,7 @@
             text-align: center;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color:darkred;
+            background-color: darkgray;
             font-size: 15px;
         }
         .mainbody {
@@ -220,8 +221,9 @@
 <div class="headernavbar">
         <img class="logo"src="Logo.png" alt="Pecking..">
         <button class="home">
+            <%= link_to "Homeeeeeeeeeeeee", root_path, class: "homelink"%>
         </button>
-        <button class="trees"></button>
+        <button class="trees"><%= link_to "Treeeeeeeeee", branchlist_path, class: "homelink"%></button>
         <button class="search"></button>
         <button class="user">
             <% if Current.user%>
@@ -253,7 +255,7 @@
                 </div>
                 -->
                 <% if Current.user.pecks %>
-                <% @pecks = Peck.where(user_id: Current.user.id)%>
+                <% @pecks = Peck.where(user_id: Current.user.id, tree: "Main Forest")%>
                 <% @pecks.each do |peck| %>
                     <% if !peck.pecks.nil? %>
                         <% if peck.pecks <= 20 %>
