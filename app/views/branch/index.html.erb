@@ -327,6 +327,7 @@
                     </div>
 
                     <div class="postbtncontainer">
+                        <%= hidden_field_tag(:name, @branchname) %>
                         <%= form.submit "Peck", class: "postbtn" %>
                     </div>
                 <% end %>

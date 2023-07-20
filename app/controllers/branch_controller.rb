@@ -4,8 +4,8 @@ class BranchController < ApplicationController
     end
 
     def create
-        @peck = Current.user.pecks.create(post: params[:post], tree: @branchname, pecks: params[:pecks], user_id: Current.user.id)
-        redirect_to branched_path
+        @peck = Current.user.pecks.create(post: params[:post], tree: params[:name], pecks: params[:pecks], user_id: Current.user.id)
+        redirect_to branched_path(:branchname => @branchname)
     end
 
     def invite
@@ -13,7 +13,7 @@ class BranchController < ApplicationController
     end
 
     def new
-
+        @branchname = params[:branchname]
     end
 
     def destroy
