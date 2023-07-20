@@ -334,8 +334,8 @@
         </div>
         <div class="userfeed">
             <h1>Share the branch with:</h1>
-            <% @others = User.joins(:branches).where(branches: {name: @branchname})%>
-            <% !@others.each do |other|%>
+            <% @others = User.joins(:branches).where.not(branches: {name: @branchname})%>
+            <% @others.each do |other|%>
                 <div>
                     <img src="Logo.png" class="profilepic">
                     <%= button_to other.username, invite_path(:user => other, :branchname => @branchname, :user_id => other.id), class: "inviteuser" %>
