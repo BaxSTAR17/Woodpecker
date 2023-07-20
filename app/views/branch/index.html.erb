@@ -164,6 +164,7 @@
             color: darkred;
             flex-direction: row;
             transition: background-color 0.3s ease-in;
+            padding-left: 10px;
         }
         .userfeed > div:hover {
             background-color: darkgray;
@@ -284,7 +285,7 @@
     </div>
     <div class="mainbody">
         <div class="joinedusers">
-            <h1>Share the branch with:</h1>
+            <h1>Branched with:</h1>
             <% @currentbranch = Branch.where(name: @branchname) %>
             <% @joined = User.joins(:branches).where(branches: {name: @branchname})%>
             <% @joined.each do |joined| %>
@@ -332,7 +333,7 @@
             </div>
         </div>
         <div class="userfeed">
-            <h1>Branched with:</h1>
+            <h1>Share the branched with:</h1>
             <% @others = User.joins(:branches).where(branches: {name: !@branchname})%>
             <% @others.each do |other|%>
                 <div>
