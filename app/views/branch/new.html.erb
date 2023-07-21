@@ -160,7 +160,7 @@
             border-radius: 25px;
             color: darkred;
             flex-direction: row;
-            transition: background-color 0.3s ease-in;
+            transition: background-color 0.2s ease-in;
             padding-left: 10px;
         }
         .userfeed > div:hover {
@@ -264,6 +264,10 @@
             top: 24px;
             left: 20px;
         }
+        .branchfeed > div::-webkit-scrollbar-thumb {
+            position: absolute;
+            bottom: 0;
+         }
     </style>
 
 <div class="headernavbar">
@@ -323,7 +327,8 @@
                     </div>
 
                     <div class="peckercontainer">
-                        <%= form.text_field :pecks, class: "pecker", value: "1" %>
+                        <%= hidden_field_tag(:pecks, 1) %>
+                        <%= form.label :pecks, "1", class: "pecker"%>
                     </div>
 
                     <div class="postbtncontainer">

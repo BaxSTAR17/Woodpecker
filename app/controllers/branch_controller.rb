@@ -11,6 +11,7 @@ class BranchController < ApplicationController
     def invite
         @user = params[:user]
         @branchh = Branch.create(name: params[:name], user_id: params[:user_id])
+        redirect_to branched_path(:branchname => params[:name])
     end
 
     def new
