@@ -284,8 +284,8 @@
     <div class="mainbody">
         <div class="joinedusers">
             <h1>Branched with:</h1>
-            <% @currentbranch = Branch.where(name: "Test Branch") %>
-            <% @joined = User.joins(:branches).where(branches: {name: "Test Branch"})%>
+            <% @currentbranch = Branch.where(name: @branchname) %>
+            <% @joined = User.joins(:branches).where(branches: {name: @branchname})%>
             <% @joined.each do |joined| %>
                 <div>
                     <img src="Logo.png" class="profilepic">
@@ -296,11 +296,11 @@
         <div class="branchcontainer">
             <div class="branchtitle">
                 <img src="tree.png" class="branchlogo">
-                <h1><%= "Test Branch" %></h1>
+                <h1><%= @branchname %></h1>
             </div>
             <div class="branchfeed">
             <% if Current.user.pecks %>
-                <% @pecks = Peck.where(tree: "Test Branch")%>
+                <% @pecks = Peck.where(tree: @branchname)%>
                     <% @pecks.each do |peck| %>
                         <% if !peck.pecks.nil? %>
                             <% if peck.pecks <= 20%>
@@ -335,11 +335,11 @@
         </div>
         <div class="userfeed">
             <h1>Share the branch with:</h1>
-            <% @others = User.joins(:branches).where.not(branches: {name: "Test Branch"}).or(User.where(branches: nil))%>
+            <% @others = User.where.not(id: User.joins(:branches).where(branches: {name: @branchname}))%>
             <% @others.each do |other|%>
                 <div>
                     <img src="Logo.png" class="profilepic">
-                    <%= button_to other.username, invite_path(:user => other, :name => "Test Branch", :user_id => other.id), class: "inviteuser" %>
+                    <%= button_to other.username, invite_path(:user => other, :name => @branchname, :user_id => other.id), class: "inviteuser" %>
                 </div>
             <% end %>
         </div>

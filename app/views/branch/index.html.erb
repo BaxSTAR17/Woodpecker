@@ -129,6 +129,7 @@
         }
         .branchfeed {
             overflow: auto;
+            scroll-behavior: smooth;
             width: 494px;
             height: 450px;
             border-right: 1px solid darkgray;
@@ -335,7 +336,7 @@
         </div>
         <div class="userfeed">
             <h1>Share the branch with:</h1>
-            <% @others = User.joins(:branches).where.not(branches: {name: @branchname}).or(User.where(branches: nil))%>
+            <% @others = User.where.not(id: User.joins(:branches).where(branches: {name: @branchname}))%>
             <% @others.each do |other|%>
                 <div>
                     <img src="Logo.png" class="profilepic">
