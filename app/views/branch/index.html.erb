@@ -353,3 +353,8 @@
         <%= link_to "Home Forest", dashboard_path, class: "currenttree"%>
         <%= link_to ">> Next Tree", music_path, class: "currenttree"%>
     </div>
+
+<script>
+var messageBody = document.querySelector('.branchfeed');
+messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+</script>
