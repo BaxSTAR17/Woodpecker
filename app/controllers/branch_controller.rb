@@ -9,6 +9,7 @@ class BranchController < ApplicationController
     end
 
     def invite
+        @user = params[:user]
         @branchh = @user.branches.create(name: params[:name], user_id: params[:user_id])
     end
 
