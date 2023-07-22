@@ -218,6 +218,9 @@
         .homelink {
             opacity: 0;
         }
+        .imagefield {
+            border-top: 1px solid darkgray
+        }
     </style>
 
 <div class="headernavbar">
@@ -245,7 +248,7 @@
                 <span class="username"><%= Current.user.username %></span>
                 <%= form_for Current.user, url: user_path do |form| %>
                     <div>
-                    <%= form.file_field :image, accept: 'image/png,image/jpeg' %>
+                    <%= form.file_field :image, accept: 'image/png,image/jpeg', class: "imagefield" %>
                     </div>
 
                     <div>
