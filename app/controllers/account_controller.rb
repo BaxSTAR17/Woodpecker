@@ -4,7 +4,7 @@ class AccountController < ApplicationController
     end
 
     def create
-        Current.user.image = params[:image]
+        Current.user.image.attach(params[:image])
         redirect_to dashboard_path
     end
 end
