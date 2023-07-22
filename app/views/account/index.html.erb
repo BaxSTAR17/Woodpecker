@@ -242,10 +242,10 @@
                 <% if Current.user.image.attached? %>
                     <%= image_tag(Current.user.image, class: "pfp")%>
                 <% else %>
-                    <h1>Hi</h1>
+                    <img src="Logo.png" class="pfp">
                 <% end %>
                 <span class="username"><%= Current.user.username %></span>
-                <%= form_with model: @user, url: user_path do |form| %>
+                <!-- <%= form_with model: @user, url: user_path do |form| %>
                     <div>
                     <%= form.file_field :image, accept: 'image/png,image/jpeg', class: "imagefield" %>
                     </div>
@@ -253,7 +253,7 @@
                     <div>
                     <%= form.submit "Change Profile Pic", class: "postbtn"%>
                     </div>
-                <% end %>
+                <% end %> -->
         </div>
         <div class="postcontainer">
             <!-- This is a form layout
