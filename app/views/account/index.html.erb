@@ -239,6 +239,9 @@
     </div>
     <div class="mainbody">
         <div class="accountface">
+                <% if !@hatdog.nil? %>
+                    <h1>Hi</h1>
+                <% end %>
                 <% if Current.user.image.attached? %>
                     <h1>Hello</h1>
                     <%= image_tag(Current.user.image, class: "pfp")%>
