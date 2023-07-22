@@ -239,7 +239,8 @@
     </div>
     <div class="mainbody">
         <div class="accountface">
-                <% if !@hatdog.nil? %>
+                <% if Current.user.image.attached? %>
+                    <h1>Hello</h1>
                     <%= image_tag(Current.user.image, class: "pfp")%>
                 <% end%>
                 <span class="username"><%= Current.user.username %></span>
