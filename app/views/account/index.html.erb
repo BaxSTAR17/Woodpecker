@@ -239,10 +239,7 @@
     </div>
     <div class="mainbody">
         <div class="accountface">
-                <% if !@hatdog.nil? %>
-                    <h1>Hi</h1>
-                <% end %>
-                <% if Current.user.image.blank? %>
+                <% if Current.user.image.nil? %>
                     <h1>Hello</h1>
                     <!-- <%= image_tag(Current.user.image, class: "pfp")%> -->
                 <% end%>
