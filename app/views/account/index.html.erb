@@ -242,7 +242,9 @@
                 <% if Current.user.image.attached? %>
                     <h1>Hello</h1>
                     <!-- <%= image_tag(Current.user.image, class: "pfp")%> -->
-                <% end%>
+                <% else %>
+                    <h1>Hi</h1>
+                <% end %>
                 <span class="username"><%= Current.user.username %></span>
                 <%= form_with model: @user, url: user_path do |form| %>
                     <div>
