@@ -4,7 +4,7 @@ class AccountController < ApplicationController
     end
 
     def create
-        Current.user.image.attach(params[:image])
+        Current.user.image.attach(params[:image][:tempfile])
         redirect_to user_path
     end
 end
