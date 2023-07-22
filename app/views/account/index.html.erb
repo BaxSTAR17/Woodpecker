@@ -239,7 +239,7 @@
     </div>
     <div class="mainbody">
         <div class="accountface">
-                <% if !Current.user.image.nil? %>
+                <% if Current.user.image.attached? %>
                     <%= image_tag(Current.user.image, class: "pfp")%>
                 <% else %>
                     <img src="Logo.png" class="pfp">
