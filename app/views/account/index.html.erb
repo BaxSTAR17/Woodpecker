@@ -242,9 +242,9 @@
                 <% if !@hatdog.nil? %>
                     <h1>Hi</h1>
                 <% end %>
-                <% if Current.user.image.attached? %>
+                <% if Current.user.image.blank? %>
                     <h1>Hello</h1>
-                    <%= image_tag(Current.user.image, class: "pfp")%>
+                    <!-- <%= image_tag(Current.user.image, class: "pfp")%> -->
                 <% end%>
                 <span class="username"><%= Current.user.username %></span>
                 <%= form_with model: @user, url: user_path do |form| %>
