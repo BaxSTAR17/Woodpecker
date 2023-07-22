@@ -244,7 +244,7 @@
                     <img src="Logo.png" class="pfp">
                 <% end %>
                 <span class="username"><%= Current.user.username %></span>
-                <% form_for Current.user, url: user_path, do |form| %>
+                <% form_for Current.user, url: user_path do |form| %>
                     <%= form.file_field :image, accept: 'image/png,image/jpeg' %>
                     <%= form.submit "Change Profile Pic", class: "postbtn"%>
                 <% end %>
