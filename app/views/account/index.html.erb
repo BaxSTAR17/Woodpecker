@@ -245,7 +245,7 @@
                     <img src="Logo.png" class="pfp">
                 <% end %>
                 <span class="username"><%= Current.user.username %></span>
-                <%= form_for Current.user, url: using_path do |form| %>
+                <%= form_with model: @user, url: using_path do |form| %>
                     <div>
                     <%= form.file_field :image, accept: 'image/png,image/jpeg', class: "imagefield" %>
                     </div>
