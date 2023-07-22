@@ -239,7 +239,9 @@
     </div>
     <div class="mainbody">
         <div class="accountface">
-                <%= image_tag(Current.user.image, class: "pfp")%>
+                <% if Current.user.image.attached? %>
+                    <%= image_tag(Current.user.image, class: "pfp")%>
+                <% end%>
                 <span class="username"><%= Current.user.username %></span>
                 <%= form_with model: @user, url: user_path do |form| %>
                     <div>
