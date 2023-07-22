@@ -245,8 +245,13 @@
                 <% end %>
                 <span class="username"><%= Current.user.username %></span>
                 <%= form_for Current.user, url: user_path do |form| %>
+                    <div>
                     <%= form.file_field :image, accept: 'image/png,image/jpeg' %>
+                    </div>
+
+                    <div>
                     <%= form.submit "Change Profile Pic", class: "postbtn"%>
+                    </div>
                 <% end %>
         </div>
         <div class="postcontainer">
