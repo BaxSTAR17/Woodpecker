@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
 
   get "user", to: "account#index"
-  post "user", to: "account#create"
+  post "using", to: "account#create"
 
   get "another_user", to: "others#index"
 
